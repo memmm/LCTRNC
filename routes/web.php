@@ -21,3 +21,4 @@ Route::get('/about', function () {
 });
 
 Route::get('/newctrl', 'NewController');
+
