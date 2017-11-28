@@ -20,7 +20,7 @@ Route::get('/', function () {
 //   return view('about');
 // });
 
-Route::get('/about', 'NewController');
+Route::get('/list', 'VenueController@index');
 
 Route::get('/newctrl', 'NewController');
 

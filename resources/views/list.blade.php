@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-        <div class="flex-center position-ref full-height">
+
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -12,8 +12,6 @@
                     @endif
                 </div>
             @endif
-
-
 
 
                 <div class="links">
@@ -28,10 +26,10 @@
                 <div class="title m-b-md">
                     Venue names
                 </div>
-                @foreach ($venues as $venue)
-                  <li>{{ $venue->name }}</li>
+                @foreach ($things as $thing)
+                  <li>{{ $thing->name }}</li>
                 @endforeach
 
-            </div>
+
 
 @stop
