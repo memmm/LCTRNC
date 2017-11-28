@@ -5,7 +5,7 @@
 @section('content')
 
                 <div class="links">
-                  <a href="about">About</a>
+                  <a href="list">Lists</a>
                   <a href="/">Artists</a>
                   <a href="/">Events</a>
                   <a href="/">Venues</a>

@@ -14,7 +14,7 @@ class VenueController extends Controller
      */
     public function index()
     {
-        //
+        return view('list', ['things' => Venue::get()]);
     }
 
     /**
