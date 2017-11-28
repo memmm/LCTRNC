@@ -23,3 +23,8 @@ Route::get('/', function () {
 Route::get('/about', 'NewController');
 
 Route::get('/newctrl', 'NewController');
+
+Route::resource('users', 'UserController');
+Route::resource('events', 'EventController');
+Route::resource('venues', 'VenueController');
+Route::resource('artists', 'ArtistController');

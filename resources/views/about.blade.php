@@ -13,23 +13,25 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    About
-                </div>
+
+
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
                     <a href="/">Home</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/">Artists</a>
+                    <a href="/">Events</a>
+                    <a href="/">Venues</a>
+                    <a href="/">Login</a>
+
                 </div>
 
+                <div class="title m-b-md">
+                    Venue names
+                </div>
                 @foreach ($venues as $venue)
                   <li>{{ $venue->name }}</li>
                 @endforeach
 
             </div>
-        </div>
+
 @stop
