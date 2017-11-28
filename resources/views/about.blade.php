@@ -25,6 +25,11 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                @foreach ($venues as $venue)
+                  <li>{{ $venue->name }}</li>
+                @endforeach
+
             </div>
         </div>
 @stop

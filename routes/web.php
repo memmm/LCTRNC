@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/about', function () {
-  return view('about');
-});
+// Route::get('/about', function () {
+//   return view('about');
+// });
+
+Route::get('/about', 'NewController@show');
 
 Route::get('/newctrl', 'NewController');
-
