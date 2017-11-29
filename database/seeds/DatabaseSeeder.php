@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+
         for ($x = 0; $x <= 15; $x++){
 
         DB::table('venues')->insert([
@@ -41,5 +42,6 @@ class DatabaseSeeder extends Seeder
             'enddate' => Carbon::create('2000', '01', '01')
         ]);
       }
+
     }
 }
