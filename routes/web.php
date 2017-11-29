@@ -28,3 +28,4 @@ Route::resource('users', 'UserController');
 Route::resource('events', 'EventController');
 Route::resource('venues', 'VenueController');
 Route::resource('artists', 'ArtistController');
+
