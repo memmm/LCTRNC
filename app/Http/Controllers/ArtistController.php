@@ -14,7 +14,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        return view('list', ['things' => Artist::get()]);
+        
+         return view('list', ['things' => Artist::get(), 'dbname' => 'Artist']);
     }
 
     /**

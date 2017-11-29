@@ -15,7 +15,7 @@
 
     </head>
     <body>
-      <span id="title">LCTRNC</span>
+      <a href="/" id="title" style="text-decoration: none">LCTRNC</a>
       <div class="main-cont">
             @if (Route::has('login'))
                 <div class="top-right links">
