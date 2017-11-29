@@ -6,11 +6,15 @@
 
 
 
-<div class="upcomingEventsContainer collection">
+<div class="upcomingEventsContainer collectionevent">
+   
+</div>
+
+<div class="popularArtistsContainer collectionartist">
 
 </div>
 
-<div class="popularArtistsContainer collection">
+<div class="popularArtistsContainer collectionvenue">
 
 </div>
 

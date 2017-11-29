@@ -25,6 +25,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .top-right {
@@ -35,6 +36,7 @@ html, body {
 
 .content {
     text-align: center;
+   
 }
 
 .title {
@@ -67,10 +69,31 @@ html, body {
     text-transform: uppercase;
 }
 
-.collection {
+.collectionartist {
   width: 95%;
-  height: 5em;
+  height: 12em;
   margin: 1vh 1vw;
   background: rgba(0,50,0,0.5);
+  background-image: url(../images/villalobos.jpg);
 
 }
+
+.collectionevent {
+  width: 95%;
+  height: 12em;
+  margin: 1vh 1vw;
+  background: rgba(0,50,0,0.5);
+  background-image: url(../images/villalobos.jpg);
+
+}
+
+.collectionvenue {
+  width: 95%;
+  height: 12em;
+  margin: 1vh 1vw;
+  background: rgba(0,50,0,0.5);
+  background-image: url(../images/villalobos.jpg);
+ 
+
+}
+

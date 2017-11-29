@@ -17,6 +17,7 @@
     <body>
       <a href="/" id="title" style="text-decoration: none">LCTRNC</a>
       <div class="main-cont">
+         
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -34,9 +35,10 @@
               <a href="venues">Venues</a>
               <a href="/">Login</a>
             </div>
-
+          
         @yield('content')
 
       </div>
+         
       </body>
   </html>
