@@ -14,7 +14,8 @@ class VenueController extends Controller
      */
     public function index()
     {
-        return view('list', ['things' => Venue::get()]);
+      //  $dbname = 'Venue';
+        return view('list', ['things' => Venue::get(), 'dbname' => 'Venue']);
     }
 
     /**

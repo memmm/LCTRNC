@@ -28,6 +28,13 @@
                 </div>
             @endif
 
+            <div class="links">
+              <a href="artists">Artists</a>
+              <a href="events">Events</a>
+              <a href="venues">Venues</a>
+              <a href="/">Login</a>
+            </div>
+
         @yield('content')
 
       </div>
