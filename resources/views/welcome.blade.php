@@ -4,13 +4,7 @@
 
 @section('content')
 
-                <div class="links">
-                  <a href="list">Lists</a>
-                  <a href="/">Artists</a>
-                  <a href="/">Events</a>
-                  <a href="/">Venues</a>
-                  <a href="/">Login</a>
-                </div>
+
 
 <div class="upcomingEventsContainer collection">
 
