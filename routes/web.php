@@ -31,3 +31,7 @@ Route::resource('events', 'EventController');
 Route::resource('venues', 'VenueController');
 Route::resource('artists', 'ArtistController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
