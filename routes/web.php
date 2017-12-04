@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 // Route::get('/about', function () {
@@ -24,7 +24,7 @@ Route::get('/venues', 'VenueController@index');
 Route::get('/events', 'EventController@index');
 Route::get('/artists', 'ArtistController@index');
 
-Route::get('/newctrl', 'NewController');
+Route::get('/', 'NewController@index');
 
 Route::resource('users', 'UserController');
 Route::resource('events', 'EventController');

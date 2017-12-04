@@ -9,19 +9,17 @@ use App\Http\Controllers\Controller;
 
 class NewController extends Controller
 {
-    /**
-     * Show the profile for the given user.
-     *
-     * @return Response
-     */
-    public function __invoke()
-    {
 
-    // $venues = Venue::all();
-    //
-    // foreach ($venues as $venue) {
-    //     echo $venue->name;
-    // }
-        return view('about', ['venues' => Venue::get()]);
+    public function index()
+    {
+        $venues = Venue::all();
+        return view('welcome', compact('venues'));
+    }
+
+    public function show($id)
+    {
+        $venue = Venue::find($id);
+
+        return $venue;
     }
 }
