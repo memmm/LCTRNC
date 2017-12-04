@@ -10,4 +10,11 @@ class Venue extends Model
     {
         return with(new static)->getTable();
     }
+    
+  protected $fillable = [
+      'name',
+      'address',
+      'city',
+      'email'
+  ];
 }

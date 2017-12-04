@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Venue;
-use Illuminate\Http\Request;
+use Request;
 
 class VenueController extends Controller
 {
@@ -26,6 +26,7 @@ class VenueController extends Controller
     public function create()
     {
         //
+        return view('create');
     }
 
     /**
@@ -34,9 +35,14 @@ class VenueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
+        $input = Request::all();
+        
+        Venue::create($input);
+        
+        return redirect('venues');
     }
 
     /**
