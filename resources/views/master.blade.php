@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
       <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
       <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -16,29 +17,70 @@
     </head>
     <body>
       <a href="/" id="title" style="text-decoration: none">LCTRNC</a>
-      <div class="main-cont">
-         
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/about') }}">About</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
 
-            <div class="links">
-              <a href="artists">Artists</a>
-              <a href="events">Events</a>
-              <a href="venues">Venues</a>
-              <a href="/">Login</a>
-            </div>
-          
+      <div class="main-cont">
+
+          <div class="container" id="app">
+              <nav class="links">
+
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"><a href="artists">Artists</a></span>
+                        <span class="icon-bar"><a href="events">Events</a></span>
+                        <span class="icon-bar"><a href="venues">Venues</a></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <a href="artists">Artists</a>
+                    <a href="events">Events</a>
+                    <a href="venues">Venues</a>
+                    <a href="{{ url('/about') }}">About</a>
+
+
+                <!-- Right Side Of Navbar -->
+
+
+                  @if (Auth::guest())
+
+                      @if (Route::has('login'))
+                                  <a href="{{ url('/register') }}">Register</a>
+                                  <a href="login">Login</a>
+                      @endif
+
+                  @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                  @endif
+                </ul>
+        </div>
+    </nav>
+  </div>
         @yield('content')
 
       </div>
-         
+
+      <!-- Scripts -->
+      <script src="{{ asset('js/app.js') }}"></script>
       </body>
   </html>

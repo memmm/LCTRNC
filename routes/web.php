@@ -24,6 +24,9 @@ Route::get('/venues', 'VenueController@index');
 Route::get('/events', 'EventController@index');
 Route::get('/artists', 'ArtistController@index');
 
+Route::get('/event/{id}', 'EventController@show');
+
+
 Route::get('/', 'NewController@index');
 
 Route::resource('users', 'UserController');

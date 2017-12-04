@@ -5,21 +5,39 @@
 @section('content')
 
 
+<h3>Events</h3>
+<div class="upcomingEventsContainer collection row">
 
-<div class="upcomingEventsContainer collection">
-
+  @foreach ($events as $event )
+  <a href="/event/{{ $event->id }}">
+    <article>
+      <li>Name: {{$event->name}}</li>
+      <li>Date: {{$event->startdate}}</li>
+    </article>
+    </a>
+  @endforeach;
 </div>
 
-<div class="popularArtistsContainer collection">
 
+<h3>Artists</h3>
+<div class="popularArtistsContainer collection row">
+
+  @foreach ($artists as $artist )
+    <article>
+      <li>Name: {{$artist->name}}</li>
+      <li>Country: {{$artist->country}}</li>
+    </article>
+  @endforeach;
 </div>
 
-<div class="popularVenuesContainer collection">
-  <h1>Venues</h1>
+
+  <h3>Venues</h3>
+<div class="popularVenuesContainer collection row">
+
   @foreach ($venues as $venue )
     <article>
-      <h2>{{$venue->name}}</h2>
-
+      <li>Name: {{$venue->name}}</li>
+      <li>City: {{$venue->city}}</li>
     </article>
   @endforeach;
 </div>
