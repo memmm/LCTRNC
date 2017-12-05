@@ -11,6 +11,9 @@
        @include ('partials', ['submitButton' => 'Add venue']);
 
    {!! Form::close() !!}
+
+
+
    
 @include('errors');
 

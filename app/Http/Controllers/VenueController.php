@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\AddVenueRequest;
 use Illuminate\HttpResponse;
 use Illuminate\Http\Request;
+use Session;
 
 class VenueController extends Controller
 {
@@ -52,9 +53,11 @@ class VenueController extends Controller
      * @param  \App\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function show(Venue $venue)
+    public function show($id)
     {
-        //
+        $venue = Venue::findOrFail($id);
+
+        return view('venue', compact('venue'));
     }
 
     /**
@@ -89,8 +92,11 @@ class VenueController extends Controller
      * @param  \App\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Venue $venue)
+    public function destroy($id)
     {
-        //
+       $venue = Venue::find($id);
+       $venue->delete();
+       Session::flash('msg', 'The venue was successfully delete.');
+       return redirect()->route('venues.index');
     }
 }

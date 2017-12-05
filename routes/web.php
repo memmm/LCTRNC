@@ -44,3 +44,4 @@ Route::get('venues/create', 'VenueController@create');
 Route::post('venues', 'VenueController@store');
 
 Route::get('venues/{id}/edit', 'VenueController@edit');
+
