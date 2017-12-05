@@ -6,6 +6,7 @@ use App\Venue;
 use App\Http\Requests;
 use App\Http\Requests\AddVenueRequest;
 use Illuminate\HttpResponse;
+use Illuminate\Http\Request;
 
 class VenueController extends Controller
 {
@@ -62,9 +63,10 @@ class VenueController extends Controller
      * @param  \App\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function edit(Venue $venue)
+    public function edit($id)
     {
-        //
+        $venue = Venue::findOrFail($id);
+        return view('edit', compact('venue'));
     }
 
     /**
@@ -74,9 +76,11 @@ class VenueController extends Controller
      * @param  \App\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Venue $venue)
+    public function update($id, AddVenueRequest $request)
     {
-        //
+         $venue = Venue::findOrFail($id);
+         $venue->update($request->all());
+         return redirect('venues');
     }
 
     /**
