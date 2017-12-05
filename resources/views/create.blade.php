@@ -22,7 +22,11 @@
          
        {!! Form::label('email', 'Email:') !!}
        {!! Form::text('email', null, ['class' => 'form-control']) !!}
-        
+       
+         
+       {!! Form::label('added_on', 'Add on:') !!}
+       {!! Form::input('date', 'added_on', date('Y-m-d'), ['class' => 'form-control']) !!}
+         
        <br>
          
        <!-- Add venue -->
@@ -32,5 +36,12 @@
 
    {!! Form::close() !!}
    
+@if ($errors->any())
+   <ul class="alert alert-danger">
+       @foreach ($errors->all() as $error)
+           <li>{{ $error }}</li>
+       @endforeach
+   </ul>
+@endif
 
 @stop

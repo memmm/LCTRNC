@@ -17,4 +17,6 @@ class Venue extends Model
       'city',
       'email'
   ];
+    
+  
 }

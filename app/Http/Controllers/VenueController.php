@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Venue;
-use Request;
+use App\Http\Requests;
+use App\Http\Requests\AddVenueRequest;
+use Illuminate\HttpResponse;
 
 class VenueController extends Controller
 {
@@ -35,12 +37,10 @@ class VenueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(AddVenueRequest $request)
     {
-        //
-        $input = Request::all();
         
-        Venue::create($input);
+        Venue::create($request->all());
         
         return redirect('venues');
     }
