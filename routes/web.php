@@ -11,19 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-
-// Route::get('/about', function () {
-//   return view('about');
-// });
-
-//Route::get('/venues', 'VenueController@index');
-//Route::get('/events', 'EventController@index');
-//Route::get('/artists', 'ArtistController@index');
 Route::get('/events/event/{id}', 'EventController@show');
+Route::get('/venues/venue/{id}', 'VenueController@show');
+Route::get('/artists/artist/{id}', 'ArtistController@show');
 Route::get('/profile/{id}', 'UserController@show');
 Route::get('about', function () {return view('about');});
 

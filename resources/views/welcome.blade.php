@@ -9,13 +9,15 @@
 <div class="upcomingEventsContainer collection row">
 
   @foreach ($events as $event )
-  <a href="/events/event/{{ $event->id }}">
+  <div class="col-sm-3">
+   <a href="/events/event/{{ $event->id }}">
     <article>
       <li>Name: {{$event->name}}</li>
       <li>Date: {{$event->startdate}}</li>
     </article>
     </a>
-  @endforeach;
+    </div>
+  @endforeach
 </div>
 
 
@@ -23,11 +25,15 @@
 <div class="popularArtistsContainer collection row">
 
   @foreach ($artists as $artist )
+  <div class="col-sm-3">
+   <a href="/artists/artist/{{ $artist->id }}">
     <article>
       <li>Name: {{$artist->name}}</li>
       <li>Country: {{$artist->country}}</li>
     </article>
-  @endforeach;
+  </a>
+  </div>
+  @endforeach
 </div>
 
 
@@ -35,11 +41,15 @@
 <div class="popularVenuesContainer collection row">
 
   @foreach ($venues as $venue )
+  <div class="col-sm-3">
+   <a href="/venues/venue/{{ $venue->id }}">
     <article>
       <li>Name: {{$venue->name}}</li>
       <li>City: {{$venue->city}}</li>
     </article>
-  @endforeach;
+  </a>
+  </div>
+  @endforeach
 </div>
 
   @stop

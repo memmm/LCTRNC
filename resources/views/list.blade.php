@@ -4,12 +4,16 @@
 
 
                 <div class="title m-b-md">
-                    {{$dbname}} names
+                    {{$dbname}}s
                 </div>
 
-                <div class="well" style="background: black;">
+                <div class="tiles">
                 @foreach ($things as $thing)
+                <a href="{{Request::url()}}/{{lcfirst($dbname)}}/{{$thing->id}}">
+                <div class="box">
                   <li>{{ $thing->name }}</li>
+                </div></a>
+
                 @endforeach
                 </div>
 

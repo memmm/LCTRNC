@@ -14,9 +14,9 @@ class NewController extends Controller
 
     public function index()
     {
-        $venues = Venue::latest()->get();
-        $events = Event::latest()->get();
-        $artists = Artist::latest()->get();
+        $venues = Venue::latest()->take(4)->get();
+        $events = Event::latest()->take(4)->get();
+        $artists = Artist::latest()->take(4)->get();
         return view('welcome', compact('venues', 'events', 'artists'));
     }
 

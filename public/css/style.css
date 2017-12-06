@@ -1,11 +1,11 @@
 html, body {
     background-color: darkseagreen;
-    background-image: url(../images/laser.gif);
-    background-size: cover;
+    background-image: url(../images/back.jpg);
+    background-repeat: repeat;
     color: lightgray;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@ html, body {
   width: 93vw;
   min-height: 90vh;
   margin: 0em 3vw 1vh 3vw;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.90);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   flex-direction: column;
@@ -41,6 +41,7 @@ html, body {
 
 .title {
     font-size: 44px;
+    font-weight: 800;
 }
 
 #title {
@@ -85,13 +86,7 @@ li.dropdown > a {
 
 .collection {
   width: 95%;
-  height: 12em;
   margin: 1vh 1vw;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
@@ -101,15 +96,33 @@ h3 {
   color: dimgray;
 }
 
-.collection > a {
-  width: 20%;
-  height: 90%;
+.collection > div {
+  height: 5em;
+}
+
+.collection > div > a {
+  width: 100%;
+  height: 100%;
   margin: 0.5em;
 }
 
-.collection > a > article {
+.collection > div > a > article {
   width: 100%;
   height: 100%;
   background: rgba(90,20,100,0.2);
 
+}
+
+.box {
+  margin-bottom: 20px;
+   height:100px;
+   background:purple;
+}
+
+.tiles {
+  width: 90%;
+   margin: 2em auto;
+    column-count: 3;
+    column-gap: 3%;
+    column-width: 30%;
 }

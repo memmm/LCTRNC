@@ -52,9 +52,11 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function show(Artist $artist)
+    public function show($id)
     {
-        //
+      $artist = Artist::findOrFail($id);
+
+      return view('artists.artist', compact('artist'));
     }
 
     /**
