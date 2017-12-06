@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Http\Requests;
+use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
+use Illuminate\HttpResponse;
+use Session;
+use Auth;
 
 class EventController extends Controller
 {
@@ -15,7 +20,7 @@ class EventController extends Controller
     public function index()
     {
         //
-         return view('list', ['things' => Event::get(), 'dbname' => 'Event']);
+         return view('list', ['things' => Event::latest()->get(), 'dbname' => 'Event']);
     }
 
     /**
@@ -25,7 +30,11 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+      if (Auth::guest())
+      {
+        return redirect('events');
+      }
+      return view('events/create');
     }
 
     /**
@@ -34,9 +43,11 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateEventRequest $request)
     {
-        //
+      Event::create($request->all());
+
+      return redirect('events');
     }
 
     /**
@@ -58,9 +69,10 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
-        //
+      $event = Event::findOrFail($id);
+      return view('events/edit', compact('event'));
     }
 
     /**
@@ -72,7 +84,9 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+      $event = Event::findOrFail($id);
+      $event->update($request->all());
+      return redirect('events');
     }
 
     /**
@@ -83,6 +97,9 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+      $event = Event::find($id);
+      $event->delete();
+      Session::flash('msg', 'The event was successfully deleted.');
+      return redirect()->route('events.index');
     }
 }

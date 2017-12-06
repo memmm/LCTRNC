@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\Http\Requests;
+use App\Http\Requests\CreateArtistRequest;
 use Illuminate\Http\Request;
+use Illuminate\HttpResponse;
+use Session;
 
 class ArtistController extends Controller
 {
@@ -14,7 +18,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        
+
          return view('list', ['things' => Artist::get(), 'dbname' => 'Artist']);
     }
 
@@ -26,7 +30,7 @@ class ArtistController extends Controller
     public function create()
     {
         //
-      
+
     }
 
     /**
@@ -35,9 +39,11 @@ class ArtistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateArtistRequest $request)
     {
-        //
+      Artist::create($request->all());
+
+      return redirect('artists');
     }
 
     /**

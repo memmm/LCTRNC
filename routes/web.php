@@ -20,12 +20,12 @@
 //   return view('about');
 // });
 
-Route::get('/venues', 'VenueController@index');
-Route::get('/events', 'EventController@index');
-Route::get('/artists', 'ArtistController@index');
-
+//Route::get('/venues', 'VenueController@index');
+//Route::get('/events', 'EventController@index');
+//Route::get('/artists', 'ArtistController@index');
 Route::get('/event/{id}', 'EventController@show');
-
+Route::get('/profile/{id}', 'UserController@show');
+Route::get('about', function () {return view('about');});
 
 Route::get('/', 'NewController@index');
 
@@ -39,9 +39,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('venues/create', 'VenueController@create');
-
-Route::post('venues', 'VenueController@store');
-
-Route::get('venues/{id}/edit', 'VenueController@edit');
-
+//Route::get('venues/create', 'VenueController@create');
+//Route::post('venues', 'VenueController@store');
+//Route::get('venues/{id}/edit', 'VenueController@edit');

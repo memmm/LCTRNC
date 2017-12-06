@@ -8,6 +8,7 @@ use App\Http\Requests\AddVenueRequest;
 use Illuminate\HttpResponse;
 use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class VenueController extends Controller
 {
@@ -19,7 +20,7 @@ class VenueController extends Controller
     public function index()
     {
       //  $dbname = 'Venue';
-        return view('list', ['things' => Venue::get(), 'dbname' => 'Venue']);
+        return view('list', ['things' => Venue::latest()->get(), 'dbname' => 'Venue']);
     }
 
     /**
@@ -29,8 +30,11 @@ class VenueController extends Controller
      */
     public function create()
     {
-        //
-        return view('create');
+        if (Auth::guest())
+        {
+          return redirect('venues');
+        }
+        return view('venues/create');
     }
 
     /**
@@ -41,9 +45,9 @@ class VenueController extends Controller
      */
     public function store(AddVenueRequest $request)
     {
-        
+
         Venue::create($request->all());
-        
+
         return redirect('venues');
     }
 
@@ -69,7 +73,7 @@ class VenueController extends Controller
     public function edit($id)
     {
         $venue = Venue::findOrFail($id);
-        return view('edit', compact('venue'));
+        return view('venues/edit', compact('venue'));
     }
 
     /**
@@ -96,7 +100,7 @@ class VenueController extends Controller
     {
        $venue = Venue::find($id);
        $venue->delete();
-       Session::flash('msg', 'The venue was successfully delete.');
+       Session::flash('msg', 'The venue was successfully deleted.');
        return redirect()->route('venues.index');
     }
 }

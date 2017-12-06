@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+// use App\Event;
+// use App\User;
+// use App\EventPolicy;
+// use App\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +18,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Event' => 'App\Policies\EventPolicy',
+        'App\User' => 'App\Policies\UserPolicy',
+        // User::class => UserPolicy::class,
+        // Event::class => EventPolicy::class,
     ];
 
     /**

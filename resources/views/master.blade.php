@@ -34,9 +34,9 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                   <ul class="nav navbar-nav navbar-right">
-                    <a href="artists">Artists</a>
-                    <a href="events">Events</a>
-                    <a href="venues">Venues</a>
+                    <a href="{{ url('/artists') }}">Artists</a>
+                    <a href="{{ url('/events') }}">Events</a>
+                    <a href="{{ url('/venues') }}">Venues</a>
                     <a href="{{ url('/about') }}">About</a>
 
 
@@ -47,7 +47,7 @@
 
                       @if (Route::has('login'))
                                   <a href="{{ url('/register') }}">Register</a>
-                                  <a href="login">Login</a>
+                                  <a href="{{ url('/login') }}">Login</a>
                       @endif
 
                   @else
@@ -57,6 +57,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="/profile/{{ Auth::user()->id }}">Profile</a></li>
                             <li><a href="{{ url('/home') }}">Home</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
