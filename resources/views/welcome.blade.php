@@ -9,7 +9,7 @@
 <div class="upcomingEventsContainer collection row">
 
   @foreach ($events as $event )
-  <a href="/event/{{ $event->id }}">
+  <a href="/events/event/{{ $event->id }}">
     <article>
       <li>Name: {{$event->name}}</li>
       <li>Date: {{$event->startdate}}</li>

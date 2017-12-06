@@ -9,7 +9,7 @@
        <p>Content: {{$event->description}}</p>
     </div>
     @if(Auth::user())
-    <a href="{{url()->current()}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
+    <a href="../{{$event->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
     @endif
 </div>
 @endsection

@@ -6,6 +6,7 @@
    {!! Form::model($venue, ['method' => 'PATCH', 'action' => ['VenueController@update', $venue->id]]) !!}
      @include ('venues/partials', ['submitButton' => 'Update venue'])
 
+{!! Form::close() !!}
 
 {!! Form::open(['route' => ['venues.destroy', $venue->id], 'method' => 'Delete']) !!}
 

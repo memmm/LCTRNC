@@ -23,7 +23,7 @@
 //Route::get('/venues', 'VenueController@index');
 //Route::get('/events', 'EventController@index');
 //Route::get('/artists', 'ArtistController@index');
-Route::get('/event/{id}', 'EventController@show');
+Route::get('/events/event/{id}', 'EventController@show');
 Route::get('/profile/{id}', 'UserController@show');
 Route::get('about', function () {return view('about');});
 

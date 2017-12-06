@@ -5,7 +5,7 @@
 
    {!! Form::model($event, ['method' => 'PATCH', 'action' => ['EventController@update', $event->id]]) !!}
      @include ('events/partials', ['submitButton' => 'Update event'])
-
+{!! Form::close() !!}
 
 {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'Delete']) !!}
 
