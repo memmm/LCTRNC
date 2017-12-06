@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use Illuminate\HttpResponse;
+use App\Http\Requests\CreateUserRequest;
+use Session;
+use Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -35,7 +40,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Venue::create($request->all());
+
+      return redirect('home');
     }
 
     /**
@@ -48,7 +55,7 @@ class UserController extends Controller
     {
       $user = User::findOrFail($id);
 
-      return view('profile', compact('user'));
+      return view('users/profile', compact('user'));
     }
 
     /**
@@ -57,9 +64,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+      $user = User::findOrFail($id);
+      return view('users/edit', compact('user'));
     }
 
     /**
@@ -69,9 +77,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update($id, CreateUserRequest $request )
     {
-        //
+      $user = User::findOrFail($id);
+      $user->update($request->all());
+      return redirect('home');
     }
 
     /**
@@ -80,8 +90,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+      $user = User::find($id);
+      $user->delete();
+      Session::flash('msg', 'The user was successfully deleted.');
+      return redirect()->route('users.index');
     }
 }

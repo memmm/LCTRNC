@@ -82,7 +82,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(CreateEventRequest $request, $id)
     {
       $event = Event::findOrFail($id);
       $event->update($request->all());
@@ -95,7 +95,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
       $event = Event::find($id);
       $event->delete();

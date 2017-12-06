@@ -4,7 +4,7 @@
 
 <h2>This is the user's private profile</h2>
 
-<!-- @can('show', $user) -->
+<!-- @can('update', $user) -->
 <div class="container">
     <div class="row">
         <h1>User: {{$user->name}}</h1>

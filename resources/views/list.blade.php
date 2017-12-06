@@ -14,7 +14,7 @@
                 </div>
 
 @if(Auth::user())
-<button type="button" name="button" class="btn btn-primary">Add new</button>
+<a href="{{url()->current()}}/create"><button type="button" name="button" class="btn btn-primary">Add new</button></a>
 @endif
 
 @stop
