@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id')->unique();
             $table->string('name');
             $table->string('email');
+            $table->string('avatar')->default('default.jpg');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -40,16 +41,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('events', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->string('name');
-            $table->dateTime('startdate');
-            $table->dateTime('enddate');
-            $table->longText('description');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-
         Schema::create('venues', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
@@ -59,6 +50,24 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('events', function (Blueprint $table) {
+            $table->increments('id')->unique();
+            $table->integer('venue_id')->unsigned()->default(1);
+            $table->string('name');
+            $table->dateTime('startdate');
+            $table->dateTime('enddate');
+            $table->longText('description');
+            $table->rememberToken();
+            $table->timestamps();
+
+            $table->foreign('venue_id')
+            ->unsigned()
+            ->references('id')
+            ->on('venues');
+        });
+
+
 
 
     }

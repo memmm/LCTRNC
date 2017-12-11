@@ -8,5 +8,8 @@
     <div class="row">
        <p>Address: {{$venue->address}}</p>
     </div>
+    @if(Auth::user())
+    <a href="{{$venue->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
+    @endif
 </div>
 @endsection

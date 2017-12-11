@@ -12,10 +12,11 @@
 */
 
 
-Route::get('/events/event/{id}', 'EventController@show');
-Route::get('/venues/venue/{id}', 'VenueController@show');
-Route::get('/artists/artist/{id}', 'ArtistController@show');
+// Route::get('/events/event/{id}', 'EventController@show');
+// Route::get('/venues/venue/{id}', 'VenueController@show');
+// Route::get('/artists/artist/{id}', 'ArtistController@show');
 Route::get('/profile/{id}', 'UserController@show');
+Route::post('/profile', 'UserController@update_avatar');
 Route::get('about', function () {return view('about');});
 
 Route::get('/', 'NewController@index');

@@ -8,13 +8,13 @@
 
    {!! Form::open(['url' => 'artists']) !!}
 
-       @include ('artists/partials', ['submitButton' => 'Add artist']);
+       @include ('artists/partials', ['submitButton' => 'Add artist'])
 
    {!! Form::close() !!}
 
 
 
 
-@include('errors');
+@include('errors')
 
 @stop

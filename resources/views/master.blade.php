@@ -19,41 +19,40 @@
       <a href="/" id="title" style="text-decoration: none">LCTRNC</a>
 
       <div class="main-cont">
-
           <div class="container" id="app">
-              <nav class="links">
+              <nav class="navbar">
+                <div class="container-fluid">
 
+                <div class="navbar-header">
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"><a href="artists">Artists</a></span>
-                        <span class="icon-bar"><a href="events">Events</a></span>
-                        <span class="icon-bar"><a href="venues">Venues</a></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                    <a href="{{ url('/artists') }}">Artists</a>
-                    <a href="{{ url('/events') }}">Events</a>
-                    <a href="{{ url('/venues') }}">Venues</a>
-                    <a href="{{ url('/about') }}">About</a>
-
-
-                <!-- Right Side Of Navbar -->
+                  </div>
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/artists') }}">Artists</a></li>
+                    <li><a href="{{ url('/events') }}">Events</a></li>
+                    <li><a href="{{ url('/venues') }}">Venues</a></li>
+                    <li><a href="{{ url('/about') }}">About</a></li>
 
 
                   @if (Auth::guest())
 
                       @if (Route::has('login'))
-                                  <a href="{{ url('/register') }}">Register</a>
-                                  <a href="{{ url('/login') }}">Login</a>
+                                  <li><a href="{{ url('/register') }}">Register</a></li>
+                                  <li><a href="{{ url('/login') }}">Login</a></li>
                       @endif
 
                   @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;">
+                          <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="Profile pic" style="width:32px; height:32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;"><p style="margin-left: 30px">
+                            {{ Auth::user()->name }} </p><span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
@@ -75,6 +74,7 @@
                   @endif
                 </ul>
         </div>
+      </div>
     </nav>
   </div>
         @yield('content')

@@ -3,22 +3,32 @@
 @section('content')
 
 
-                <div class="title m-b-md">
+                <div class="title">
                     {{$dbname}}s
                 </div>
 
+                @if(Auth::user())
+                <a id="addItemBtn" href="{{url()->current()}}/create"><button type="button" name="button" class="btn btn-primary">Add new</button></a>
+                @endif
+
                 <div class="tiles">
                 @foreach ($things as $thing)
-                <a href="{{Request::url()}}/{{lcfirst($dbname)}}/{{$thing->id}}">
-                <div class="box">
-                  <li>{{ $thing->name }}</li>
-                </div></a>
 
-                @endforeach
+                <div class="box">
+                  <a href="{{Request::url()}}/{{$thing->id}}">
+                  <li>{{ $thing->name }}</li>
+
+                  @if(Auth::user())
+                  <a href="{{url()->current()}}/{{$thing->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
+                  @endif
+                    </a>
                 </div>
 
-@if(Auth::user())
-<a href="{{url()->current()}}/create"><button type="button" name="button" class="btn btn-primary">Add new</button></a>
-@endif
+
+                @endforeach
+
+                </div>
+
+
 
 @stop

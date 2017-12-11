@@ -7,7 +7,7 @@
      @include ('artists/partials', ['submitButton' => 'Update artist'])
 {!! Form::close() !!}
 
-{!! Form::open(['route' => ['artist.destroy', $artist->id], 'method' => 'Delete']) !!}
+{!! Form::open(['route' => ['artists.destroy', $artist->id], 'method' => 'Delete']) !!}
 
 {!! Form::submit('Delete artist', ['class' => 'btn btn-primary btn-block']) !!}
 

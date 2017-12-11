@@ -8,6 +8,7 @@ use App\Http\Requests\CreateArtistRequest;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use Session;
+use Auth;
 
 class ArtistController extends Controller
 {
@@ -19,7 +20,7 @@ class ArtistController extends Controller
     public function index()
     {
 
-         return view('list', ['things' => Artist::get(), 'dbname' => 'Artist']);
+         return view('list', ['things' => Artist::latest()->get(), 'dbname' => 'Artist']);
     }
 
     /**
@@ -29,7 +30,11 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+      if (Auth::guest())
+      {
+        return redirect('artists');
+      }
+      return view('artists/create');
 
     }
 
@@ -65,9 +70,10 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function edit(Artist $artist)
+    public function edit($id)
     {
-        //
+      $artist = Artist::findOrFail($id);
+      return view('artists/edit', compact('artist'));
     }
 
     /**
@@ -77,9 +83,11 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artist $artist)
+    public function update(Request $request, $id)
     {
-        //
+      $artist = Artist::findOrFail($id);
+      $artist->update($request->all());
+      return redirect('artists');
     }
 
     /**
@@ -88,8 +96,11 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Artist $artist)
+    public function destroy($id)
     {
-        //
+      $artist = Artist::find($id);
+      $artist->delete();
+      Session::flash('msg', 'The artist was successfully deleted.');
+      return redirect()->route('artist.index');
     }
 }

@@ -5,50 +5,56 @@
 @section('content')
 
 
-<h3>Events</h3>
-<div class="upcomingEventsContainer collection row">
+<h3>Highlighted events</h3>
+<div class="upcomingEventsContainer tiles">
 
   @foreach ($events as $event )
-  <div class="col-sm-3">
-   <a href="/events/event/{{ $event->id }}">
-    <article>
+
+
+    <article class="box">
+      <a href="/events/{{ $event->id }}">
       <li>Name: {{$event->name}}</li>
       <li>Date: {{$event->startdate}}</li>
+      </a>
     </article>
-    </a>
-    </div>
+
+
   @endforeach
 </div>
 
 
-<h3>Artists</h3>
-<div class="popularArtistsContainer collection row">
+<h3>Highlighted artists</h3>
+<div class="popularArtistsContainer tiles">
 
   @foreach ($artists as $artist )
-  <div class="col-sm-3">
-   <a href="/artists/artist/{{ $artist->id }}">
-    <article>
+
+
+    <article class="box">
+      <a href="/artists/{{ $artist->id }}">
       <li>Name: {{$artist->name}}</li>
       <li>Country: {{$artist->country}}</li>
+        </a>
     </article>
-  </a>
-  </div>
+
+
   @endforeach
 </div>
 
 
-  <h3>Venues</h3>
-<div class="popularVenuesContainer collection row">
+  <h3>Highlighted venues</h3>
+<div class="popularVenuesContainer tiles">
 
   @foreach ($venues as $venue )
-  <div class="col-sm-3">
-   <a href="/venues/venue/{{ $venue->id }}">
-    <article>
+
+
+    <article class="box">
+       <a href="/venues/{{ $venue->id }}">
       <li>Name: {{$venue->name}}</li>
       <li>City: {{$venue->city}}</li>
+      </a>
     </article>
-  </a>
-  </div>
+
+
   @endforeach
 </div>
 

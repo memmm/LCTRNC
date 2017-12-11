@@ -8,13 +8,13 @@
 
    {!! Form::open(['url' => 'events']) !!}
 
-       @include ('events/partials', ['submitButton' => 'Add event']);
+       @include ('events/partials', ['submitButton' => 'Add event'])
 
    {!! Form::close() !!}
 
 
 
 
-@include('errors');
+@include('errors')
 
 @stop

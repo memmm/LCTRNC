@@ -9,7 +9,7 @@
        <p>Content: {{$artist->description}}</p>
     </div>
     @if(Auth::user())
-    <a href="../{{$artist->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
+    <a href="{{$artist->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
     @endif
 </div>
 @endsection
