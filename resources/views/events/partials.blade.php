@@ -13,6 +13,9 @@
        {!! Form::label('enddate', 'Ends:') !!}
        {!! Form::input('date', 'enddate', date('Y-m-d'), ['class' => 'form-control']) !!}
 
+       {!! Form::label('image', 'Image:') !!}
+       {!! Form::file('image', 'image', ['class' => 'form-control']) !!}
+
        <br>
 
        <!-- Add venue -->

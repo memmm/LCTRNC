@@ -15,6 +15,11 @@ html, body {
   box-sizing: border-box;
 }
 
+p {
+  overflow: hidden;
+
+}
+
 .main-cont {
   margin: auto;
   width: 93vw;
@@ -60,20 +65,34 @@ html, body {
 }
 
 .navbar {
-  width: 110%;
   height: 1.3rem;
+  width: 90%;
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
 }
 
+.nav {
+  padding: 0;
+  margin-left: 10%;
+}
+
+
 .navbar-header {
   float: right;
 }
 
-
 .container {
+  width: 90%;
   margin-right: 5px;
+}
+
+.container-fluid {
+  width: 100%;
+}
+
+#app-navbar-collapse {
+  margin: auto;
 }
 
 #app-navbar-collapse > ul > li {
@@ -114,10 +133,17 @@ h3 {
    background: #26004d;
 }
 
-.box > img {
+.box > a > img {
    width: 100%;
     height: 100%;
     object-fit: cover;
+
+}
+
+.box > a > * {
+  background: black;
+  text-decoration: none;
+
 }
 
 .tiles {

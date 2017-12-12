@@ -9,6 +9,7 @@ use Illuminate\HttpResponse;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use Image;
 
 class VenueController extends Controller
 {
@@ -76,6 +77,7 @@ class VenueController extends Controller
         return view('venues/edit', compact('venue'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -87,8 +89,24 @@ class VenueController extends Controller
     {
          $venue = Venue::findOrFail($id);
          $venue->update($request->all());
-         return redirect('venues');
+
+         if($request->hasFile('image')){
+           $image = $request->file('image');
+
+           $filename = time() . '.' . $image->getClientOriginalExtension();
+           Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
+
+           $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
+           Image::make($image)->fit(300)->invert()->save( public_path('/uploads/images/' . $pixfilename));
+
+           $venue->image = $filename;
+           $venue->save();
+         }
+         return view('venues/venue', compact('venue'));
+         // return redirect('venues');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use Session;
 use Auth;
+use Image;
 
 class ArtistController extends Controller
 {
@@ -87,7 +88,22 @@ class ArtistController extends Controller
     {
       $artist = Artist::findOrFail($id);
       $artist->update($request->all());
-      return redirect('artists');
+
+      if($request->hasFile('image')){
+        $image = $request->file('image');
+
+        $filename = $artist->name . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
+
+        $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(300)->pixelate(12)->save( public_path('/uploads/images/' . $pixfilename));
+
+
+        $artist->image = $filename;
+        $artist->save();
+      }
+
+      return view('artists/artist', compact('artist'));
     }
 
     /**

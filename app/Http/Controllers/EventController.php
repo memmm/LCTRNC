@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use Session;
 use Auth;
+use Image;
 
 class EventController extends Controller
 {
@@ -87,6 +88,25 @@ class EventController extends Controller
       $event = Event::findOrFail($id);
       $event->update($request->all());
       return redirect('events');
+    }
+
+    public function update_image($id, Request $request )
+    {
+
+      if($request->hasFile('img')){
+        $img = $request->file('img');
+
+        $filename = time() . '.' . $img->getClientOriginalExtension();
+        Image::make($img)->fit(300)->save( public_path('/uploads/images/' . $filename));
+
+        $pixfilename = 'pix' . time() . '.' . $img->getClientOriginalExtension();
+        Image::make($img)->fit(300)->colorize(50,-50,50)->save( public_path('/uploads/images/' . $pixfilename));
+
+        $event = Event::findOrFail($id);
+        $event->image = $filename;
+        $event->save();
+      }
+      return view('events/event', compact('event'));
     }
 
     /**

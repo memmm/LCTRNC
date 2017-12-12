@@ -11,10 +11,11 @@
   @foreach ($events as $event )
 
 
-    <article class="box">
+    <article class="box" style="background-image: url(/uploads/images/{{ $event->image }})">
       <a href="/events/{{ $event->id }}">
-      <li>Name: {{$event->name}}</li>
-      <li>Date: {{$event->startdate}}</li>
+
+      <h4>Name: {{$event->name}}</h4>
+      <p>Date: {{$event->startdate}}</p>
       </a>
     </article>
 
@@ -29,10 +30,10 @@
   @foreach ($artists as $artist )
 
 
-    <article class="box">
+    <article class="box" style="background-image: url(/uploads/images/{{ $artist->image }})">
       <a href="/artists/{{ $artist->id }}">
-      <li>Name: {{$artist->name}}</li>
-      <li>Country: {{$artist->country}}</li>
+      <h4>Name: {{$artist->name}}</h4>
+      <p>Country: {{$artist->country}}</p>
         </a>
     </article>
 
@@ -47,10 +48,12 @@
   @foreach ($venues as $venue )
 
 
-    <article class="box">
+    <article class="box" style="background-image: url(/uploads/images/{{ $venue->image }})">
+
        <a href="/venues/{{ $venue->id }}">
-      <li>Name: {{$venue->name}}</li>
-      <li>City: {{$venue->city}}</li>
+      <h4>Name: {{$venue->name}}</h4>
+      <p>City: {{$venue->city}}</p>
+
       </a>
     </article>
 
