@@ -34,3 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('venues/create', 'VenueController@create');
 //Route::post('venues', 'VenueController@store');
 //Route::get('venues/{id}/edit', 'VenueController@edit');
+
+Route::get('importExport', 'MaatwebsiteDemoController@importExport');
+Route::get('downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
+Route::post('importExcel', 'MaatwebsiteDemoController@importExcel');
