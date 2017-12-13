@@ -11,9 +11,10 @@
   @foreach ($events as $event )
 
 
-    <article class="box" style="background-image: url(/uploads/images/{{ $event->image }})">
-      <a href="/events/{{ $event->id }}">
+    <article class="box" >
 
+      <a href="/events/{{ $event->id }}">
+      <img src='/uploads/images/{{ $event->image }}' onmouseover="this.src='/uploads/images/pix{{ $event->image }}';" onmouseout="this.src='/uploads/images/{{ $event->image }}';" />
       <h4>Name: {{$event->name}}</h4>
       <p>Date: {{$event->startdate}}</p>
       </a>
@@ -30,8 +31,9 @@
   @foreach ($artists as $artist )
 
 
-    <article class="box" style="background-image: url(/uploads/images/{{ $artist->image }})">
+    <article class="box">
       <a href="/artists/{{ $artist->id }}">
+          <img src='/uploads/images/{{ $artist->image }}' onmouseover="this.src='/uploads/images/pix{{ $artist->image }}';" onmouseout="this.src='/uploads/images/{{ $artist->image }}';" />
       <h4>Name: {{$artist->name}}</h4>
       <p>Country: {{$artist->country}}</p>
         </a>
@@ -48,9 +50,10 @@
   @foreach ($venues as $venue )
 
 
-    <article class="box" style="background-image: url(/uploads/images/{{ $venue->image }})">
+    <article class="box">
 
        <a href="/venues/{{ $venue->id }}">
+           <img src='/uploads/images/{{ $venue->image }}' onmouseover="this.src='/uploads/images/pix{{ $venue->image }}';" onmouseout="this.src='/uploads/images/{{ $venue->image }}';" />
       <h4>Name: {{$venue->name}}</h4>
       <p>City: {{$venue->city}}</p>
 

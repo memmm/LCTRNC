@@ -84,7 +84,6 @@ p {
 
 .container {
   width: 90%;
-  margin-right: 5px;
 }
 
 .container-fluid {
@@ -114,7 +113,16 @@ p {
   clear: both;
 }
 
+h4, .box > a > p {
+  width: fit-content;
+  padding: 0.5em;
+  background: black;
+  text-decoration: none;
+}
 
+.box > a > h4 {
+  margin-top: -100px;
+}
 
 h3 {
   align-self: flex-start;
@@ -131,6 +139,7 @@ h3 {
 .box {
    height:100%;
    background: #26004d;
+
 }
 
 .box > a > img {
@@ -140,11 +149,11 @@ h3 {
 
 }
 
-.box > a > * {
-  background: black;
+.box > a {
   text-decoration: none;
-
+  color: white;
 }
+
 
 .tiles {
   width: 90%;

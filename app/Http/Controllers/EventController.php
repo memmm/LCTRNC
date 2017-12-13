@@ -87,27 +87,23 @@ class EventController extends Controller
     {
       $event = Event::findOrFail($id);
       $event->update($request->all());
-      return redirect('events');
-    }
 
-    public function update_image($id, Request $request )
-    {
+      if($request->hasFile('image')){
+        $image = $request->file('image');
 
-      if($request->hasFile('img')){
-        $img = $request->file('img');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
 
-        $filename = time() . '.' . $img->getClientOriginalExtension();
-        Image::make($img)->fit(300)->save( public_path('/uploads/images/' . $filename));
+        $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(300)->colorize(50,-50,50)->save( public_path('/uploads/images/' . $pixfilename));
 
-        $pixfilename = 'pix' . time() . '.' . $img->getClientOriginalExtension();
-        Image::make($img)->fit(300)->colorize(50,-50,50)->save( public_path('/uploads/images/' . $pixfilename));
-
-        $event = Event::findOrFail($id);
         $event->image = $filename;
         $event->save();
       }
       return view('events/event', compact('event'));
     }
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -18,7 +18,7 @@
 
                   <a href="{{Request::url()}}/{{$thing->id}}">
                     <img src='/uploads/images/{{ $thing->image }}' onmouseover="this.src='/uploads/images/pix{{ $thing->image }}';" onmouseout="this.src='/uploads/images/{{ $thing->image }}';" />
-                  <h4 style="margin-top: -100px;">{{ $thing->name }}</h4>
+                  <h4>{{ $thing->name }}</h4>
 
                   @if(Auth::user())
                   <a href="{{url()->current()}}/{{$thing->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>
