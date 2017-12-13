@@ -3,7 +3,7 @@
 @section('content')
    <h1>Edit: {!! $event->name !!}</h1>
 
-   {!! Form::model($event, ['method' => 'PATCH', 'action' => ['EventController@update', $event->id]]) !!}
+   {!! Form::model($event, ['method' => 'PATCH', 'files' => true, 'action' => ['EventController@update', $event->id]]) !!}
      @include ('events/partials', ['submitButton' => 'Update event'])
 {!! Form::close() !!}
 

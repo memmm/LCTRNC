@@ -19,8 +19,8 @@
       <a href="/" id="title" style="text-decoration: none">LCTRNC</a>
 
       <div class="main-cont">
-          <div class="container" id="app">
-              <nav class="navbar">
+
+              <nav class="navbar" id="app">
                 <div class="container-fluid">
 
                 <div class="navbar-header">
@@ -40,20 +40,19 @@
                     <li><a href="{{ url('/venues') }}">Venues</a></li>
                     <li><a href="{{ url('/about') }}">About</a></li>
 
+                @if (Auth::guest())
 
-                  @if (Auth::guest())
-
-                      @if (Route::has('login'))
-                                  <li><a href="{{ url('/register') }}">Register</a></li>
-                                  <li><a href="{{ url('/login') }}">Login</a></li>
-                      @endif
+                  @if (Route::has('login'))
+                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}">Login</a></li>
+                  @endif
 
                   @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;">
                           <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="Profile pic" style="width:32px; height:32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;"><p style="margin-left: 30px">
-                            {{ Auth::user()->name }} </p><span class="caret"></span>
-                        </a>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </p></a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/profile/{{ Auth::user()->id }}">Profile</a></li>
@@ -76,9 +75,11 @@
         </div>
       </div>
     </nav>
-  </div>
+
+  <div class="container" >
         @yield('content')
 
+      </div>
       </div>
 
       <!-- Scripts -->

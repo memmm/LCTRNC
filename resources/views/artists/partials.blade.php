@@ -8,6 +8,9 @@
 
 
 
+       {!! Form::label('image', 'Image:') !!}
+       {!! Form::file('image', null, ['class' => 'form-control']) !!}
+
        <br>
 
        <!-- Add venue -->

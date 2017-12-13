@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use Session;
 use Auth;
+use Image;
 
 class EventController extends Controller
 {
@@ -86,8 +87,23 @@ class EventController extends Controller
     {
       $event = Event::findOrFail($id);
       $event->update($request->all());
-      return redirect('events');
+
+      if($request->hasFile('image')){
+        $image = $request->file('image');
+
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
+
+        $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(300)->colorize(50,-50,50)->save( public_path('/uploads/images/' . $pixfilename));
+
+        $event->image = $filename;
+        $event->save();
+      }
+      return view('events/event', compact('event'));
     }
+
+
 
     /**
      * Remove the specified resource from storage.

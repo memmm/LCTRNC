@@ -8,10 +8,13 @@
 
 
        {!! Form::label('startdate', 'Starts:') !!}
-       {!! Form::input('date', 'startdate', date('Y-m-d'), ['class' => 'form-control']) !!}
+       {!! Form::date('startdate', date('Y-m-d'), ['class' => 'form-control']) !!}
 
        {!! Form::label('enddate', 'Ends:') !!}
-       {!! Form::input('date', 'enddate', date('Y-m-d'), ['class' => 'form-control']) !!}
+       {!! Form::date('enddate', date('Y-m-d'), ['class' => 'form-control']) !!}
+
+       {!! Form::label('image', 'Image:') !!}
+       {!! Form::file('image', 'null', ['class' => 'form-control']) !!}
 
        <br>
 

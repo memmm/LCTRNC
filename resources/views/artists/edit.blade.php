@@ -3,7 +3,7 @@
 @section('content')
    <h1>Edit: {!! $artist->name !!}</h1>
 
-   {!! Form::model($artist, ['method' => 'PATCH', 'action' => ['ArtistController@update', $artist->id]]) !!}
+   {!! Form::model($artist, ['method' => 'PATCH', 'files' => true, 'action' => ['ArtistController@update', $artist->id]]) !!}
      @include ('artists/partials', ['submitButton' => 'Update artist'])
 {!! Form::close() !!}
 
