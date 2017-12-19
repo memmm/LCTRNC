@@ -11,14 +11,15 @@ class Event extends Model
         return with(new static)->getTable();
     }
 
-    public function venue() {
-      return $this->belongsTo('App\Venue');
-    }
+    // public function venue() {
+    //   return $this->belongsTo('App\Venue');
+    // }
 
   protected $fillable = [
       'name',
       'startdate',
       'enddate',
+      'image',
       'description'
   ];
 }

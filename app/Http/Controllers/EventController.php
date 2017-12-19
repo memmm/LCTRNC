@@ -83,7 +83,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateEventRequest $request, $id)
+    public function update($id, CreateEventRequest $request)
     {
       $event = Event::findOrFail($id);
       $event->update($request->all());

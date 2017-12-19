@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
-            $table->string('image')->default('default.jpg');;
+            $table->string('image')->default('default.jpg');
             $table->longText('description');
             $table->string('country');
             $table->rememberToken();
@@ -45,7 +45,7 @@ class CreateUsersTable extends Migration
         Schema::create('venues', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
-            $table->string('image')->default('default.jpg');;
+            $table->string('image')->default('default.jpg');
             $table->string('address');
             $table->string('city');
             $table->string('email');
@@ -55,19 +55,19 @@ class CreateUsersTable extends Migration
 
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('venue_id')->unsigned()->default(1);
             $table->string('name');
-            $table->string('image')->default('default.jpg');;
+            // $table->integer('venue_id')->unsigned()->default(1);
+            $table->string('image')->default('default.jpg');
             $table->dateTime('startdate');
             $table->dateTime('enddate');
             $table->longText('description');
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('venue_id')
-            ->unsigned()
-            ->references('id')
-            ->on('venues');
+            // $table->foreign('venue_id')
+            // ->unsigned()
+            // ->references('id')
+            // ->on('venues');
         });
 
 

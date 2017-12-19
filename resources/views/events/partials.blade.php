@@ -13,11 +13,11 @@
        {!! Form::label('enddate', 'Ends:') !!}
        {!! Form::date('enddate', date('Y-m-d'), ['class' => 'form-control']) !!}
 
-       {!! Form::label('image', 'Image:') !!}
-       {!! Form::file('image', 'null', ['class' => 'form-control']) !!}
+       {!! Form::label('name', 'Image:') !!}
+       {!! Form::file('image', ['class' => 'form-control']) !!}
 
        <br>
 
-       <!-- Add venue -->
+       <!-- Add event -->
        {!! Form::submit($submitButton, ['class' => 'btn btn-primary form-control']) !!}
      </div>
