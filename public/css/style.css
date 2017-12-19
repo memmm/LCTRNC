@@ -1,6 +1,6 @@
 html, body {
-    background-color: darkseagreen;
-    background-image: url(../images/back.jpg);
+    background-color: black;
+
     background-repeat: repeat;
     color: lightgray;
     font-family: 'Raleway', sans-serif;
@@ -25,7 +25,11 @@ p {
   width: 93vw;
   min-height: 90vh;
   margin: 0em 3vw 1vh 3vw;
-  background: rgba(0, 0, 0, 0.90);
+  background: rgba(61, 0, 76, 0.9);
+  background-image:
+    -webkit-gradient(linear, left top, right bottom,
+        color-stop(.34, transparent),
+        color-stop(1,#0a715e));
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   flex-direction: column;
@@ -62,7 +66,19 @@ p {
   color: black;
   align-self: center;
   z-index: 4;
+  text-decoration: none;
+  animation: glitch .3s infinite linear;
+	text-shadow:3px 2px 0 #00a4ff,-3px -2px 0 purple, -2px   3px 0 #08a74f;
 }
+
+
+@keyframes glitch {
+	100%{
+		text-shadow:-3px -2px 0 #00a4ff,3px 2px -0 purple,2px -3px 0 #08a74f;
+	}
+}
+
+
 
 .navbar {
   height: 1.3rem;

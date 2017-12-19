@@ -16,7 +16,7 @@
 
     </head>
     <body>
-      <a href="/" id="title" style="text-decoration: none">LCTRNC</a>
+      <a href="/" class="center glitch" data-text="LCTRNC" id="title">LCTRNC</a>
 
       <div class="main-cont">
 

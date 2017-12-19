@@ -183,6 +183,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        Dingo\Api\Provider\LaravelServiceProvider::class
+
     ],
 
     /*

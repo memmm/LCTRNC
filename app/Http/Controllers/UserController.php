@@ -21,6 +21,7 @@ class UserController extends Controller
     public function index()
     {
 
+      return User::latest()->get();
     }
 
     /**
@@ -55,8 +56,8 @@ class UserController extends Controller
     public function show($id)
     {
       $user = User::findOrFail($id);
-
-      return view('users/profile', compact('user'));
+      return $user;
+    //  return view('users/profile', compact('user'));
     }
 
     /**
