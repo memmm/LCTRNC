@@ -95,7 +95,7 @@ class ArtistController extends Controller
         $filename = $artist->name . '.' . $image->getClientOriginalExtension();
         Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
 
-        $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
+        $pixfilename = 'pix' . $artist->name . '.' . $image->getClientOriginalExtension();
         Image::make($image)->fit(300)->pixelate(12)->save( public_path('/uploads/images/' . $pixfilename));
 
 

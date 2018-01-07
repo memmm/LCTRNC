@@ -93,10 +93,10 @@ class VenueController extends Controller
          if($request->hasFile('image')){
            $image = $request->file('image');
 
-           $filename = time() . '.' . $image->getClientOriginalExtension();
+           $filename = $venue->name . '.' . $image->getClientOriginalExtension();
            Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
 
-           $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
+           $pixfilename = 'pix' . $venue->name . '.' . $image->getClientOriginalExtension();
            Image::make($image)->fit(300)->invert()->save( public_path('/uploads/images/' . $pixfilename));
 
            $venue->image = $filename;
