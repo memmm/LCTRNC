@@ -92,12 +92,12 @@ class ArtistController extends Controller
 
       if($request->hasFile('image')){
         $image = $request->file('image');
-
+        $watermark = Image::make(public_path('lctrnc-logo.png'));
         $filename = $artist->name . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
+        Image::make($image)->fit(300)->insert($watermark, 'bottom-right')->save( public_path('/uploads/images/' . $filename));
 
         $pixfilename = 'pix' . $artist->name . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(300)->pixelate(12)->save( public_path('/uploads/images/' . $pixfilename));
+        Image::make($image)->fit(300)->pixelate(12)->insert($watermark, 'bottom-right')->save( public_path('/uploads/images/' . $pixfilename));
 
 
         $artist->image = $filename;

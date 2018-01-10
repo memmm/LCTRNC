@@ -100,12 +100,13 @@ class EventController extends Controller
 
       if($request->hasFile('image')){
         $image = $request->file('image');
-
+        $watermark = Image::make(public_path('lctrnc-logo.png'));
         $filename = time() . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
+        Image::make($image)->fit(300)->insert($watermark, 'bottom-right')->save( public_path('/uploads/images/' . $filename));
 
         $pixfilename = 'pix' . time() . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(300)->colorize(50,-50,50)->save( public_path('/uploads/images/' . $pixfilename));
+
+        Image::make($image)->fit(300)->colorize(50,-50,50)->insert($watermark, 'bottom-right')->save( public_path('/uploads/images/' . $pixfilename));
 
         $event->image = $filename;
         $event->save();

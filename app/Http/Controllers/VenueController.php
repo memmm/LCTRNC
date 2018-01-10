@@ -93,12 +93,12 @@ class VenueController extends Controller
 
          if($request->hasFile('image')){
            $image = $request->file('image');
-
+           $watermark = Image::make(public_path('lctrnc-logo.png'));
            $filename = $venue->name . '.' . $image->getClientOriginalExtension();
-           Image::make($image)->fit(300)->save( public_path('/uploads/images/' . $filename));
+           Image::make($image)->fit(300)->insert($watermark, 'bottom-right')->save( public_path('/uploads/images/' . $filename));
 
            $pixfilename = 'pix' . $venue->name . '.' . $image->getClientOriginalExtension();
-           Image::make($image)->fit(300)->invert()->save( public_path('/uploads/images/' . $pixfilename));
+           Image::make($image)->fit(300)->invert()->insert($watermark, 'bottom-right')->save( public_path('/uploads/images/' . $pixfilename));
 
            $venue->image = $filename;
            $venue->save();
