@@ -11,9 +11,9 @@ class Venue extends Model
         return with(new static)->getTable();
     }
 
-    public function events() {
-      return $this->hasMany('App\Event');
-    }
+    // public function events() {
+    //   return $this->hasMany('App\Event');
+    // }
 
   protected $fillable = [
       'name',

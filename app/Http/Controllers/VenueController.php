@@ -71,8 +71,9 @@ class VenueController extends Controller
      * @param  \App\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+       $request->user()->authorizeRoles(['moderator', 'admin']);
         $venue = Venue::findOrFail($id);
         return view('venues/edit', compact('venue'));
     }

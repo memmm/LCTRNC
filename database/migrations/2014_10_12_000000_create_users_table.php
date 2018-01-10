@@ -61,6 +61,9 @@ class CreateUsersTable extends Migration
             $table->dateTime('startdate');
             $table->dateTime('enddate');
             $table->longText('description');
+          //  $table->string('venuename');
+            $table->string('venue_name')->references('name')->on('venues');
+
             $table->rememberToken();
             $table->timestamps();
 

@@ -71,8 +71,9 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+      $request->user()->authorizeRoles(['moderator', 'admin']);
       $artist = Artist::findOrFail($id);
       return view('artists/edit', compact('artist'));
     }

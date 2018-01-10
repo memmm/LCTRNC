@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
+use App\Event;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\HttpResponse;
@@ -24,8 +25,9 @@ class MaatwebsiteDemoController extends Controller
      *
      * @var array
      */
-	public function importExport()
+	public function importExport(Request $request)
 	{
+		$request->user()->authorizeRoles(['moderator', 'admin']);
 		return view('importExport');
 	}
 
@@ -35,7 +37,7 @@ class MaatwebsiteDemoController extends Controller
      *
      * @var array
      */
-	public function downloadExcel(Request $request, $type)
+	public function downloadUsersExcel(Request $request, $type)
 	{
 		$data = User::get()->toArray();
 		return Excel::create('usersExcel', function($excel) use ($data) {
@@ -43,6 +45,17 @@ class MaatwebsiteDemoController extends Controller
 	        {
 				$sheet->fromArray($data);
 	        });
+		})->download($type);
+	}
+
+	public function downloadEventsExcel(Request $request, $type)
+	{
+		$data = Event::get()->toArray();
+		return Excel::create('eventsExcel', function($excel) use ($data) {
+			$excel->sheet('mySheet', function($sheet) use ($data)
+					{
+				$sheet->fromArray($data);
+					});
 		})->download($type);
 	}
 
@@ -54,39 +67,25 @@ class MaatwebsiteDemoController extends Controller
      */
 	public function importExcel(Request $request)
 	{
-
-
 		if($request->hasFile('import_file')){
 			$path = $request->file('import_file')->getRealPath();
 
-
 			$data = Excel::load($path, function($reader) {})->get();
 
-
 			if(!empty($data) && $data->count()){
-
-
 				foreach ($data->toArray() as $key => $value) {
 					if(!empty($value)){
-						foreach ($value as $v) {		
+						foreach ($value as $v) {
 							$insert[] = ['name' => $v['name'], 'email' => $v['email']];
 						}
 					}
 				}
-
-				
 				if(!empty($insert)){
 					User::insert($insert);
 					return back()->with('success','Insert Record successfully.');
 				}
-
-
 			}
-
-
 		}
-
-
 		return back()->with('error','Please Check your file, Something is wrong there.');
 	}
 

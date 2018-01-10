@@ -10,6 +10,7 @@
     </div>
     <div class="row">
        <p>Description: {{$event->description}}</p>
+       <p>Venue: {{$event->venue_name}}</p>
     </div>
     @if(Auth::user())
     <a href="{{$event->id}}/edit"><button type="button" name="button" class="btn btn-primary">Modify</button></a>

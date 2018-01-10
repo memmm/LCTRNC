@@ -23,11 +23,11 @@ class UserTableSeeder extends Seeder
       $visitor->save();
       $visitor->roles()->attach($role_visitor);
 
-      $mod = new User();
-      $mod->name = 'Moderator Name';
-      $mod->email = 'mod@example.com';
-      $mod->password = bcrypt('secret');
-      $mod->save();
-      $mod->roles()->attach($role_moderator);
+      $moderator = new User();
+      $moderator->name = 'Moderator Name';
+      $moderator->email = 'mod@example.com';
+      $moderator->password = bcrypt('secret');
+      $moderator->save();
+      $moderator->roles()->attach($role_moderator);
     }
 }

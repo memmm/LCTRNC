@@ -16,6 +16,9 @@
        {!! Form::label('name', 'Image:') !!}
        {!! Form::file('image', ['class' => 'form-control']) !!}
 
+       {!! Form::label('name', 'Venue:') !!}
+       {!! Form::select('venue_name', $venues, null, ['class' => 'form-control']) !!}
+
        <br>
 
        <!-- Add event -->

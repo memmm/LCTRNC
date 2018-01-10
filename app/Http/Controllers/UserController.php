@@ -13,6 +13,10 @@ use Image;
 
 class UserController extends Controller
 {
+
+  public function __construct() {
+    $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +26,11 @@ class UserController extends Controller
     {
 
       return User::latest()->get();
+    }
+
+    public function list()
+    {
+      return User::all();
     }
 
     /**
@@ -68,6 +77,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+
       $user = User::findOrFail($id);
       return view('users/edit', compact('user'));
     }

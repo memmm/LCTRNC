@@ -36,5 +36,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('venues/{id}/edit', 'VenueController@edit');
 
 Route::get('importExport', 'MaatwebsiteDemoController@importExport');
-Route::get('downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
+Route::get('downloadUsersExcel/{type}', 'MaatwebsiteDemoController@downloadUsersExcel');
+Route::get('downloadEventsExcel/{type}', 'MaatwebsiteDemoController@downloadEventsExcel');
+Route::get('eventslist', 'EventController@list');
+Route::get('userslist', 'UserController@list');
 Route::post('importExcel', 'MaatwebsiteDemoController@importExcel');

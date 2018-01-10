@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Venue;
 use App\Http\Requests;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
@@ -22,6 +23,12 @@ class EventController extends Controller
     {
         //
          return view('list', ['things' => Event::latest()->get(), 'dbname' => 'Event']);
+        // return Event::all();
+    }
+
+    public function list()
+    {
+      return Event::all();
     }
 
     /**
@@ -35,7 +42,8 @@ class EventController extends Controller
       {
         return redirect('events');
       }
-      return view('events/create');
+      $venues = Venue::pluck('name');
+      return view('events/create', compact('venues'));
     }
 
     /**
@@ -70,10 +78,12 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+      $request->user()->authorizeRoles(['moderator', 'admin']);
       $event = Event::findOrFail($id);
-      return view('events/edit', compact('event'));
+      $venues = Venue::pluck('name');
+      return view('events/edit', compact('event', 'venues'));
     }
 
     /**

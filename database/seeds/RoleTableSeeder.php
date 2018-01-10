@@ -14,11 +14,15 @@ class RoleTableSeeder extends Seeder
     {
       $role_visitor = new Role();
       $role_visitor->name = 'visitor';
-      $role_visitor->description = 'A Visitor User';
+      $role_visitor->description = 'Visitor User';
       $role_visitor->save();
       $role_mod = new Role();
-      $role_mod->name = 'mod';
-      $role_mod->description = 'A Moderator User';
+      $role_mod->name = 'moderator';
+      $role_mod->description = 'Moderator User';
+      $role_mod->save();
+      $role_mod = new Role();
+      $role_mod->name = 'admin';
+      $role_mod->description = 'Admin User';
       $role_mod->save();
     }
 }
