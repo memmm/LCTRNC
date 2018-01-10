@@ -33,14 +33,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('performs', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->longText('description');
-            $table->dateTime('startdate');
-            $table->dateTime('enddate');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+
 
         Schema::create('venues', function (Blueprint $table) {
             $table->increments('id')->unique();
@@ -73,6 +66,23 @@ class CreateUsersTable extends Migration
             // ->on('venues');
         });
 
+        Schema::create('artist_event', function (Blueprint $table) {
+            $table->integer('artist_id')->unsigned()->index();
+            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
+            $table->integer('event_id')->unsigned()->index();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->dateTime('startdate');
+            $table->dateTime('enddate');
+            $table->timestamps();
+        });
+
+        Schema::create('event_user', function (Blueprint $table) {
+          $table->integer('event_id')->unsigned()->index();
+          $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+          $table->integer('user_id')->unsigned()->index();
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+          $table->timestamps();
+        });
 
 
 
@@ -87,8 +97,9 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('artists');
-        Schema::dropIfExists('performs');
         Schema::dropIfExists('events');
         Schema::dropIfExists('venues');
+        Schema::dropIfExists('artist_event');
+        Schema::dropIfExists('event_user');
     }
 }

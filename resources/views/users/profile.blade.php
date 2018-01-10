@@ -20,6 +20,12 @@
     </div>
     <div class="row">
        <p>Email: {{$user->email}}</p>
+       <h4>Favourite Events</h4>
+       <ul>
+         @foreach ($user->events as $event)
+         <li>{{ $event->name }}</li>
+         @endforeach
+       </ul>
     </div>
 </div>
 <!-- @endcan -->

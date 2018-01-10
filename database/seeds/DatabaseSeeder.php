@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
          $this->call(RoleTableSeeder::class);
          $this->call(UserTableSeeder::class);
 
-        for ($x = 0; $x <= 15; $x++){
+        for ($x = 0; $x <= 10; $x++){
 
         DB::table('venues')->insert([
             'name' => str_random(10),

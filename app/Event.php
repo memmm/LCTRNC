@@ -16,6 +16,14 @@ class Event extends Model
       return $this->belongsTo('Venue', 'venue_name');
     }
 
+    public function users() {
+      return $this->belongsToMany('App\User');
+    }
+
+    public function artists() {
+      return $this->belongsToMany('App\Artist');
+    }
+
   protected $fillable = [
       'name',
       'startdate',

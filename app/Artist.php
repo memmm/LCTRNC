@@ -17,4 +17,8 @@ class Artist extends Model
         'image',
         'country'
     ];
+
+    public function events() {
+      return $this->belongsToMany('App\Event');
+    }
 }

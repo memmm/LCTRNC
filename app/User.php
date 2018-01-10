@@ -27,6 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+  /**
+   * Get the events associated with the given user.
+   */
+    public function events()
+    {
+      return $this->belongsToMany('App\Event');
+    }
+
     /**
     * @param string|array $roles
     */
