@@ -11,6 +11,7 @@ Extra packages we used:
 - Maatwebsite/Excel
 - laravelcollective/HTML
 - intervention/image
+- Madhatter/laravel-fullcalendar
 
 Extras:
 - map on user's homepage
